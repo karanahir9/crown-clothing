@@ -16,7 +16,7 @@ class SignUp extends React.Component {
             email: '',
             password: '',
             confirmPassword: ''
-        }
+        };
     }
 
     handleSubmit = async event => {
@@ -30,7 +30,7 @@ class SignUp extends React.Component {
         }
 
         try {
-            const { user } = auth.createUserWithEmailAndPassword(
+            const { user } = await auth.createUserWithEmailAndPassword(
                 email, 
                 password
                 );
@@ -53,8 +53,8 @@ class SignUp extends React.Component {
     handleChange = event => {
         const { name, value } = event.target;
         
-        this.setState({[name]: value});
-    }
+        this.setState({ [name]: value });
+    };
 
     render() {
         const { displayName, email, password, confirmPassword } = this.state;
