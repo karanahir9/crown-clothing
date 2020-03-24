@@ -16,6 +16,7 @@ import { setCurrentUser } from './redux/user/user.actions';
 import { selectCurrentUser } from './redux/user/user.selectors';
 
 
+
 class App extends React.Component{
 
   unsubscribeFromAuth = null;
@@ -25,7 +26,7 @@ componentDidMount(){
   const { setCurrentUser } = this.props;
 
   this.unsubscribeFromAuth = auth.onAuthStateChanged( async userAuth => {
-    //this.setState({ currentUser: user});
+    
     if (userAuth) {
       const userRef = await createUserProfileDocument(userAuth);
 
@@ -68,8 +69,8 @@ componentWillUnmount() {
 
 
 const mapStateToProps = createStructuredSelector ({
-  currentUser: selectCurrentUser
-})
+  currentUser: selectCurrentUser,
+});
 
 const mapDispatchToProps = dispatch => ({
   setCurrentUser: user => dispatch(setCurrentUser(user))
