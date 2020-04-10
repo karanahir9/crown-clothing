@@ -31,15 +31,13 @@ app.listen(port, error => {
 });
 
 app.post('/payment', (request, response) => {
-    console.log("This is the request =============================" + request);
     const body = {
         source: request.body.token.id,
         amount: request.body.amount,
-        currency: 'usd'
+        currency: 'inr'
     };
 
     stripe.charges.create(body, (stripeErr, stripeRes) => {
-        console.log("Inside Create charge method.");
         if(stripeErr){
             response.status(500).send({ error: stripeErr});
         }
